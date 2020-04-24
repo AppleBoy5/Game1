@@ -1,0 +1,38 @@
+player = {'name': 'George', 'attack': 10, 'heal': 16, 'health': 100}
+monster = {'name': 'Fat Boy Joe', 'attack': 15, 'health': 150}
+game_running = True
+
+while game_running == True:
+    player_won = False
+    monster_won = False
+    print('Please Select An Option')
+    print('1)Attack')
+    print('2)Heal')
+
+
+    player_choice = input()
+    if player_choice == '1':
+        print('Attacking')
+        monster['health'] = monster['health'] - player['attack']
+        if monster['health'] <= 0:
+            player_won = True
+        else:
+            player['health'] = player['health'] - monster['attack']
+
+    if player_choice == '2':
+        print('Healing')
+        player['health'] = player['health'] + player['heal']
+        print('player health ', player['health'])
+
+    else:
+        print('Invalid input')
+
+    if player_won == True or monster_won == True:
+        game_running = False
+        if player['health'] <= 0:
+            player_won = True
+        print('monster health ', monster['health'], 'and player health ', player['health'])
+        if player['health'] <= 0:
+            print('Congratulations you have won the game!')
+        else:
+            print('Sorry but the monster A.K.A. Fat Boy Joe won the game this time')
